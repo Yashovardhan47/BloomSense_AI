@@ -1,0 +1,3 @@
+# frontend/src/assets
+
+Images, fonts, icons, and other static media

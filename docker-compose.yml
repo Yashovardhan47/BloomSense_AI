@@ -1,0 +1,43 @@
+# Placeholder file — implementation intentionally omitted.
+# docker-compose.yml
+# ---------------------------------------------------------------------------
+# Runs Redis locally for BloomSense AI's caching layer and Celery broker.
+#
+# This is the EASIEST way to get Redis running on Windows (native Redis
+# builds for Windows are outdated/unofficial). Requires Docker Desktop:
+#   https://www.docker.com/products/docker-desktop
+#
+# Start Redis:
+#   docker compose up -d
+#
+# Stop Redis:
+#   docker compose down
+#
+# Check it's running:
+#   docker compose ps
+#
+# View logs:
+#   docker compose logs -f redis
+# ---------------------------------------------------------------------------
+
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: bloomsense-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --save 60 1 --loglevel warning
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  redis_data:
+    driver: local
