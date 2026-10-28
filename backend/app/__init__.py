@@ -1,1 +1,1 @@
-# Placeholder file — implementation intentionally omitted.
+"""BloomSense API package."""

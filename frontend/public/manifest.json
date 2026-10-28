@@ -1,0 +1,9 @@
+{
+  "name": "BloomSense AI",
+  "short_name": "BloomSense",
+  "description": "Multilingual plant recognition, deep botanical profiles, and personal garden health management.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06100d",
+  "theme_color": "#07130f"
+}
